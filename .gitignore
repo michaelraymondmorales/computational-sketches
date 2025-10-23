@@ -1,0 +1,38 @@
+# Core Ignored Directories
+# Ignore all node_modules directories anywhere in the project.
+**/node_modules
+# Ignore Python bytecode directories.
+**/__pycache__
+# Ignore Jupyter notebook checkpoints.
+**/.ipynb_checkpoints
+# Ignore macOS specific files.
+**/.DS_Store
+
+# Logs and Temporary Files
+# All log files, no matter where they are.
+*.log
+# Specific debug files for various package managers.
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build and Distribution Directories
+# Standard build outputs.
+/dist
+/dist-ssr
+
+# Editor and IDE Files
+# Visual Studio Code
+.vscode/
+# Exclude the extensions file from the rule above, so it can be committed.
+!.vscode/extensions.json
+# IntelliJ/PyCharm
+.idea/
+# Visual Studio and other Windows-based IDE files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+# Vim swap files
+*.sw?
