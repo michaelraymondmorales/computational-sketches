@@ -1,8 +1,17 @@
 import { Canvas } from '@react-three/fiber';
 import { OrthographicCamera } from '@react-three/drei';
+import { useControls } from 'leva';
 import PlasmaPlane from './components/PlasmaPlane'
 
 const App = () => {
+
+    const { activeVersion } = useControls({
+    activeVersion: {
+      value: 'v0',
+      options: ['v0', 'v1']
+    }
+  });
+
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
             <Canvas
@@ -25,7 +34,7 @@ const App = () => {
                 />
 
                 {/* Geometry and Shader */}
-                <PlasmaPlane/>
+                <PlasmaPlane version={activeVersion} />
 
             </Canvas>
         </div>
