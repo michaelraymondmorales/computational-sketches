@@ -1,7 +1,7 @@
 import { useRef, useEffect, useMemo } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import vertexShader from '../shaders/vertex.glsl?raw'
-import fragmentShader from '../shaders/plasma-isolines-v0.glsl?raw'
+import fragmentShader from '../shaders/plasma-isolines-v1.glsl?raw'
 
 const PlasmaPlane = () => {
     const meshRef = useRef();
@@ -10,7 +10,8 @@ const PlasmaPlane = () => {
     // useMemo ensures uniforms persist and don't trigger re-renders
     const uniforms = useMemo(() => ({
         uTime: { value: 0 },
-        uAspect: { value: viewport.width / viewport.height }
+        uAspect: { value: viewport.width / viewport.height },
+        uMouse: { value: { x: 0, y: 0 } }
     }), []); // Empty dependency array: initialize once
 
     // This runs only when the window/viewport actually changes
@@ -20,6 +21,8 @@ const PlasmaPlane = () => {
 
     useFrame((state) => {
         uniforms.uTime.value = state.clock.getElapsedTime();
+        uniforms.uMouse.value.x = state.pointer.x;
+        uniforms.uMouse.value.y = state.pointer.y;
     });
 
     return (
